@@ -17,10 +17,10 @@ double fractional_knapsack (int max, vector<Item>& items, vector<double>& fracti
     int best_index = -1;
 
 
-    //Iterate over it once to find the max density
+    //Iterate over it to find the best density
     for (int i = 0; i < items.size(); i++ ) {
         if(used[i] == 1) continue;
-        double curr_density = items[i].value / items[i].weight;
+        double curr_density = (double)items[i].value / items[i].weight;
         if(curr_density > max_density) {
             max_density = curr_density;
             best_index = i;
@@ -37,14 +37,14 @@ double fractional_knapsack (int max, vector<Item>& items, vector<double>& fracti
         return items[best_index].value + fractional_knapsack(max - items[best_index].weight, items, fractions, used);
     }
     else {
-        fractions[best_index] = max / items[best_index].weight;
+        fractions[best_index] = (double)max / items[best_index].weight;
         return items[best_index].value * fractions[best_index];
     }
 }
 
 int main() {
-    vector<Item> items = { {5, 10}, {8, 8} };   // example input
-    int capacity = 10;
+    vector<Item> items = { {5, 50}, {10, 60}, {20,140}, {25,120}, {15,60} };   // example input
+    int capacity = 30;
 
     vector<double> fractions(items.size(), 0.0);
     vector<bool> used(items.size(), false);
@@ -53,7 +53,7 @@ int main() {
 
     cout << "Max total value: " << total << endl;
     for (int i = 0; i < items.size(); i++) {
-        cout << "Item " << i << " fraction: " << fractions[i] << endl;
+        cout << "Item " << i+1 << " fraction: " << fractions[i] << endl;
     }
     return 0;
 }
