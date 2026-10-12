@@ -30,8 +30,10 @@ struct Activity {
 // Write a comparator function (or lambda) that sorts activities by
 // finish time in ascending order. This will be used with std::sort.
 bool compareByFinishTime(const Activity &a, const Activity &b) {
-    // TODO: return true if activity 'a' should come before activity 'b'
-    return false; // placeholder — replace this
+    if (a.finish > b.finish) 
+        return 1;
+    else 
+        return 0;
 }
 
 // TODO 2:
@@ -44,6 +46,15 @@ vector<Activity> selectActivities(vector<Activity> activities) {
 
     // Step A: Sort the activities by finish time.
     // TODO: call std::sort using compareByFinishTime
+
+    for (int i = 0; i < no. activities; i++) {
+        if (compareByFinishTime == 0) {
+            //swap a and b
+            //go to the next vector
+        }
+        else //(a and b are equal)
+            //go to the next vector
+    }
 
     // Step B: Greedily pick activities.
     // Hint: keep track of the finish time of the last selected activity.
